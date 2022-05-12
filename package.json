@@ -1,0 +1,23 @@
+{
+  "name": "nasa-mission",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "concurrently --kill-others-on-fail \"npm test --prefix server\" \" npm test --prefix client\" ",
+    "client-install": "npm install --prefix client",
+    "server-install": "npm install --prefix server",
+    "install": "concurrently --kill-others-on-fail \"npm run client-install\" \"npm run server-install\"",
+    "client": "npm start --prefix client",
+    "server": "npm run watch --prefix server",
+    "watch": "concurrently --kill-others-on-fail \"npm run server\"  \"npm run client\"",
+    "deploy":"concurrently --kill-others-on-fail \"npm run build --prefix client\" \"npm start --prefix server\"  ",
+    "start": "npm start --prefix server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.1.0"
+  }
+}
