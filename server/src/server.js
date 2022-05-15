@@ -1,7 +1,7 @@
 const http = require('http');
 const app = require('./app');
-const { getHabbitablePlanets } = require('./models/planets.model');
 const mongoose = require('mongoose');
+const { getHabbitablePlanets } = require('./models/planets.model');
 
 const PORT=process.env.PORT || 4000;// we can define the configurable env.PORT in package json with start or wtach script it up to you by using which command you use to run the server 
 const  MONGO_URL= 'mongodb+srv://NASA-API:vkEhaLi290Qm9NW7@cluster0.fhjhw.mongodb.net/nasa?retryWrites=true&w=majority' 

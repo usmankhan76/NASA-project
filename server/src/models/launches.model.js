@@ -1,3 +1,5 @@
+// const launches = require('./launches.mongo');
+
 let launches=new Map();
 let latestFlightNumber=100;
 function isExistLaunch(id){
@@ -9,7 +11,7 @@ let launch={
     rocket:'Explorer ISI',
     launchDate:new Date('December 21, 2025'),
     target:'Kepler-442 b',
-    customer:['NASA'],
+    customers:['NASA'],
     upcoming:true,
     success:true,    
 };
