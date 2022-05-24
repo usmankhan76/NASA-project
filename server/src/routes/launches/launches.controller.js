@@ -1,10 +1,15 @@
-const {  getAllLaunches, addNewLaunch, abortLaunch, isExistLaunch } = require("../../models/launches.model")
+const { 
+     getAllLaunches,
+     scheduleNewLaunch,
+     abortLaunch,
+     isExistLaunch } = require("../../models/launches.model")
 
 function httpGetAllLaunches(req,res){
-    return res.status(200).json(getAllLaunches());  // we do this because we want to pass the array in json  
+async function httpGetAllLaunches(req,res){
+    return res.status(200).json(await getAllLaunches());  // we do this because we want to pass the array in json  
 };
 
-function httpAddNewLaunch(req,res){
+async function httpAddNewLaunch(req,res){
     let {flightNumber,mission,rocket,launchDate,target}=req.body;
     let launch={
         flightNumber,
@@ -21,7 +26,7 @@ function httpAddNewLaunch(req,res){
     if(isNaN(launch.launchDate)){
         return res.status(400).json({name:'Enter correct Date'})
     }
-    addNewLaunch(launch);
+    await scheduleNewLaunch(launch);
     // let similarity=checkExistence(launch.mission);
     // console.log("check similarity",similarity)
     return res.status(201).json(launch) 
