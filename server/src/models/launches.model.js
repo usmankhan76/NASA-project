@@ -2,11 +2,11 @@ const launchesDatabase = require('./launches.mongo');
 const planets=require('./planets.mongo');
 
 
-let launches=new Map();
 let latestFlightNumber=100;
 
-function isExistLaunch(id){
-    return launches.has(id);
+async function isExistLaunch(id){
+    return await launchesDatabase.findOne({flightNumber:id});
+
 }
 
 async function getLatestFlightNumber(){
@@ -33,7 +33,6 @@ let launch={
 };
 
  saveLaunch(launch);
-// launches.set(launch.flightNumber,launch);
 
 async function saveLaunch(launch){
         
@@ -41,8 +40,6 @@ async function saveLaunch(launch){
         // if(!isPlanetExist){   this code isn't working
         //      throw new Error('no targert planet found');
         // }
-
-        
 
 
         // return await launchesDatabase.updateOne({flightNumber:launch.flightNumber},launch,{upsert:true})// to understand this video#173 or planets.model see them
@@ -59,7 +56,6 @@ async function getAllLaunches(){
         {}, // this will return the all objects from the collection
         {'__v':0,'_id':0} // this will exclude both these fields from the reponse
         );
-    // return Array.from(launches.values())
 }
 
 async function scheduleNewLaunch(launch){
@@ -75,14 +71,18 @@ async function scheduleNewLaunch(launch){
 
 }
 
+async function abortLaunch(launchId){
+    const aborted= await launchesDatabase.updateOne({
+        flightNumber:launchId,
+    },{
+        upcoming:false,
+        success:false
+    }// we aren't adding upsert there because we don't want to insert new document
+    )
+    return aborted.modifiedCount===1;
 
-
-function abortLaunch(id){
-    let aborted=launches.get(id);
-    aborted.upcoming=false;
-    aborted.success=false
-    return aborted
 }
+
 
 module.exports={
     getAllLaunches,
