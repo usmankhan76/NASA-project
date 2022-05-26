@@ -4,6 +4,7 @@ const path = require('path');
 const morgan = require('morgan');
 const { planetRoutes } = require('./routes/planets/planets.route');
 const { launchesRoute } = require('./routes/launches/launches.route');
+const { apiRouter } = require('./routes/api');
 
 
 const app=express();
@@ -14,8 +15,10 @@ app.use(cors())
 app.use(morgan('combined'))
 app.use(express.json());
 
-app.use('/planets',planetRoutes)// we can also define the routes here with this middleware
-app.use('/launches',launchesRoute)
+//make versioning of our app we can add version here but don't do this because we want that our all same version routers live under the one route so for this we move it into api.js file 
+
+// we can also define the routes here with this middleware
+app.use('/v1',apiRouter)
 
 // to understand this concept watch video#115
 app.use(express.static(path.join(__dirname, "..","build" ,)))
