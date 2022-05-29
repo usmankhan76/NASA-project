@@ -1,5 +1,8 @@
 const http = require('http');
 const app = require('./app');
+
+require('dotenv').config();
+ 
 const { getSpaceXLaunchData } = require('./models/launches.model');
 const { getHabbitablePlanets } = require('./models/planets.model');
 const {  getMongooseConnection } = require('./services/mongo');
