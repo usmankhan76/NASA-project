@@ -1,5 +1,6 @@
 const http = require('http');
 const app = require('./app');
+const { getSpaceXLaunchData } = require('./models/launches.model');
 const { getHabbitablePlanets } = require('./models/planets.model');
 const {  getMongooseConnection } = require('./services/mongo');
 
@@ -13,6 +14,7 @@ const server=http.createServer(app)//createServer take the request listener whic
 async function startServer(){
     await getMongooseConnection();
     await getHabbitablePlanets(); 
+    await getSpaceXLaunchData();
     server.listen(PORT,()=>{
         console.log(`Server is running on ${PORT}`);
     });

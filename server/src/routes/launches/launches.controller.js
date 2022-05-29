@@ -2,10 +2,12 @@ const {
      getAllLaunches,
      scheduleNewLaunch,
      abortLaunch,
-     isExistLaunch } = require("../../models/launches.model")
+     isExistLaunch } = require("../../models/launches.model");
+const { paginationUsingQuery } = require("../../services/query");
 
 async function httpGetAllLaunches(req,res){
-    return res.status(200).json(await getAllLaunches());  // we do this because we want to pass the array in json  
+    const {skip,limit}=paginationUsingQuery(req.query)
+    return res.status(200).json(await getAllLaunches(skip,limit));  // we do this because we want to pass the array in json  
 };
 
 async function httpAddNewLaunch(req,res){
