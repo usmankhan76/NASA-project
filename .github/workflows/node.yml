@@ -1,5 +1,11 @@
-name:NASA PROJECT CI
-on: [push]
+name: NASA PROJECT CI
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    bracnhes:
+      - main
 jobs:
   build:  
     runs-on: ubunt-latest
