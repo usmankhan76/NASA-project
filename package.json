@@ -11,13 +11,13 @@
     "client": "npm start --prefix client",
     "server": "npm run watch --prefix server",
     "watch": "concurrently --kill-others-on-fail \"npm run server\"  \"npm run client\"",
-    "deploy":"concurrently --kill-others-on-fail \"npm run build --prefix client\" \"npm start --prefix server\"  ",
+    "deploy": "concurrently --kill-others-on-fail \"npm run build --prefix client\" \"npm start --prefix server\"  ",
     "start": "npm start --prefix server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^7.1.0"
+  "dependencies": {
+    "concurrently": "^7.2.1"
   }
 }
