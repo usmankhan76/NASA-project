@@ -8,7 +8,7 @@ on:
       - main
 jobs:
   build:  
-    runs-on: ubunt-latest
+    runs-on: ubuntu-latest
     steps:
       - name: check the latest code of our Project
         uses: actions/checkout@v2
