@@ -7,7 +7,7 @@
     "test": "concurrently --kill-others-on-fail \"npm test --prefix server\" \" npm test --prefix client\" ",
     "client-install": "npm install --prefix client",
     "server-install": "npm install --prefix server",
-    "install": "npm run client-install && npm run server-install\"",
+    "install": "npm run client-install && npm run server-install",
     "client": "npm start --prefix client",
     "server": "npm run watch --prefix server",
     "watch": "concurrently --kill-others-on-fail \"npm run server\"  \"npm run client\"",
