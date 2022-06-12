@@ -1,5 +1,5 @@
 name:NASA PROJECT CI
-on: [push,pul_request]
+on: [push]
 jobs:
   build:  
     runs-on: ubunt-latest
