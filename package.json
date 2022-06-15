@@ -9,6 +9,7 @@
     "server-install": "npm install --prefix server",
     "client": "npm start --prefix client",
     "server": "npm run watch --prefix server",
+    "install": "concurrently -k \"npm run client-install\" \"npm run server-install\"",
     "watch": "concurrently --kill-others-on-fail \"npm run server\"  \"npm run client\"",
     "deploy": "concurrently --kill-others-on-fail \"npm run build --prefix client\" \"npm start --prefix server\"  ",
     "start": "npm start --prefix server"
