@@ -1,0 +1,6 @@
+.git
+
+*/node_modules
+# this means remove node_modules from all folders
+
+server/public
